@@ -9,6 +9,9 @@ const {
   searchPosts,
 } = require('../controllers/postController');
 const protect = require('../middleware/authMiddleware');
+const { validatePost } = require('../middleware/validator');
+router.post('/', protect, validatePost, createPost);
+
 
 const router = express.Router();
 
