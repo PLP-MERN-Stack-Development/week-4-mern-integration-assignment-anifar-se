@@ -1,5 +1,11 @@
 import { usePosts } from "../hooks/usePosts";
 import PostCard from "../components/PostCard";
+const [page, setPage] = useState(1);
+const { posts } = usePosts(page, 10);
+
+<button onClick={() => setPage(page + 1)}>Next</button>
+<button onClick={() => setPage(page - 1)} disabled={page <= 1}>Previous</button>
+
 
 export default function Home() {
   const { posts, loading, error } = usePosts();
