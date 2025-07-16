@@ -5,6 +5,13 @@ import { postService } from "../services/api";
 export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
+  const [comment, setComment] = useState('');
+
+const handleComment = async () => {
+  await postService.addComment(post._id, { content: comment });
+  setComment('');
+};
+
 
   useEffect(() => {
     postService.getPost(id).then(setPost);
